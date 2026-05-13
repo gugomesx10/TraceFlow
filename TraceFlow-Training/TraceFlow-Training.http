@@ -1,0 +1,6 @@
+@TraceFlow_Training_HostAddress = http://localhost:5164
+
+GET {{TraceFlow_Training_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

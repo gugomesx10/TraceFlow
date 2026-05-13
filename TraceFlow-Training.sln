@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraceFlow-Training", "TraceFlow-Training\TraceFlow-Training.csproj", "{343FFED0-76BB-4D0B-AFDC-6BD290481AD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraceFlowTraining.Domain", "TraceFlowTraining.Domain\TraceFlowTraining.Domain.csproj", "{F453BC8C-EDEE-416F-9265-2F22DB0750C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraceFlowTraining.Application", "TraceFlowTraining.Application\TraceFlowTraining.Application.csproj", "{D2F334B4-9A69-4D3E-B2F6-A19D820CD70C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraceFlowTraining.Infrastructure", "TraceFlowTraining.Infrastructure\TraceFlowTraining.Infrastructure.csproj", "{1317CF5B-9A4C-4FA2-A844-1034481F5CD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraceFlowTraining.Tests", "TraceFlowTraining.Tests\TraceFlowTraining.Tests.csproj", "{8BF85CEC-EEAB-473C-ACF1-11C14BF4C486}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{343FFED0-76BB-4D0B-AFDC-6BD290481AD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{343FFED0-76BB-4D0B-AFDC-6BD290481AD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{343FFED0-76BB-4D0B-AFDC-6BD290481AD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{343FFED0-76BB-4D0B-AFDC-6BD290481AD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F453BC8C-EDEE-416F-9265-2F22DB0750C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F453BC8C-EDEE-416F-9265-2F22DB0750C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F453BC8C-EDEE-416F-9265-2F22DB0750C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F453BC8C-EDEE-416F-9265-2F22DB0750C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2F334B4-9A69-4D3E-B2F6-A19D820CD70C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2F334B4-9A69-4D3E-B2F6-A19D820CD70C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2F334B4-9A69-4D3E-B2F6-A19D820CD70C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2F334B4-9A69-4D3E-B2F6-A19D820CD70C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1317CF5B-9A4C-4FA2-A844-1034481F5CD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1317CF5B-9A4C-4FA2-A844-1034481F5CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1317CF5B-9A4C-4FA2-A844-1034481F5CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1317CF5B-9A4C-4FA2-A844-1034481F5CD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BF85CEC-EEAB-473C-ACF1-11C14BF4C486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BF85CEC-EEAB-473C-ACF1-11C14BF4C486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BF85CEC-EEAB-473C-ACF1-11C14BF4C486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BF85CEC-EEAB-473C-ACF1-11C14BF4C486}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
