@@ -46,6 +46,9 @@ builder.Services.AddOpenTelemetry()
             {
                 options.Endpoint =
                     new Uri("http://jaeger:4317");
+
+                options.Protocol =
+                    OpenTelemetry.Exporter.OtlpExportProtocol.Grpc;
             });
     });
 
@@ -53,8 +56,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddHealthChecks()
     .AddNpgSql(
-        "Host=postgres;Port=5432;Database=traceflowdb;Username=postgres;Password=postgres",
-        name: "postgresql");
+        "Host=postgres;Port=5432;Database=traceflowdb;Username=postgres;Password=postgres");
 
 builder.Services.AddDbContext<TraceFlowDbContext>(options =>
     options.UseNpgsql(

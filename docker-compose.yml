@@ -8,10 +8,13 @@ services:
     restart: always
     ports:
       - "8080:8080"
+    environment:
+      ASPNETCORE_URLS: http://+:8080
     depends_on:
       - postgres
       - seq
       - jaeger
+      - datadog
 
   postgres:
     image: postgres:16
@@ -45,6 +48,19 @@ services:
     ports:
       - "16686:16686"
       - "4317:4317"
+
+  datadog:
+    image: gcr.io/datadoghq/agent:latest
+    container_name: traceflow-datadog
+    restart: always
+    environment:
+      DD_API_KEY: 964acf2e246595153e4917db2976b5b2
+      DD_SITE: datadoghq.com
+      DD_APM_ENABLED: "true"
+      DD_APM_NON_LOCAL_TRAFFIC: "true"
+      DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_GRPC_ENDPOINT: 0.0.0.0:4317
+    ports:
+      - "8126:8126"
 
 volumes:
   postgres_data:
