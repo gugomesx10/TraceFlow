@@ -1,6 +1,17 @@
-version: '3.9'
-
 services:
+
+  api:
+    build:
+      context: .
+      dockerfile: TraceFlow-Training/Dockerfile
+    container_name: traceflow-api
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - seq
+      - jaeger
 
   postgres:
     image: postgres:16

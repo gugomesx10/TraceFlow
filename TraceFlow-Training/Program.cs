@@ -15,7 +15,7 @@ using HealthChecks.NpgSql;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
-    .WriteTo.Seq("http://localhost:5431")
+    .WriteTo.Seq("http://seq:80")
     .Enrich.FromLogContext()
     .CreateLogger();
 
@@ -45,7 +45,7 @@ builder.Services.AddOpenTelemetry()
             .AddOtlpExporter(options =>
             {
                 options.Endpoint =
-                    new Uri("http://localhost:4317");
+                    new Uri("http://jaeger:4317");
             });
     });
 
@@ -53,12 +53,12 @@ builder.Services.AddControllers();
 
 builder.Services.AddHealthChecks()
     .AddNpgSql(
-        "Host=localhost;Port=5433;Database=traceflowdb;Username=postgres;Password=postgres",
+        "Host=postgres;Port=5432;Database=traceflowdb;Username=postgres;Password=postgres",
         name: "postgresql");
 
 builder.Services.AddDbContext<TraceFlowDbContext>(options =>
     options.UseNpgsql(
-        "Host=localhost;Port=5433;Database=traceflowdb;Username=postgres;Password=postgres"));
+        "Host=postgres;Port=5432;Database=traceflowdb;Username=postgres;Password=postgres"));
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IStockMovementRepository, StockMovementRepository>();
@@ -71,33 +71,36 @@ builder.Services.AddSwaggerGen(options =>
     options.EnableAnnotations();
 
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    
-    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
-    
-    options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
-        Scheme = "bearer",
-        BearerFormat = "JWT",
-        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-        Description = "Enter JWT token"
-    });
 
-    options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
-    {
+    options.IncludeXmlComments(
+        Path.Combine(AppContext.BaseDirectory, xmlFilename));
+
+    options.AddSecurityDefinition("Bearer",
+        new Microsoft.OpenApi.Models.OpenApiSecurityScheme
         {
-            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            Name = "Authorization",
+            Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+            Scheme = "bearer",
+            BearerFormat = "JWT",
+            In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+            Description = "Enter JWT token"
+        });
+
+    options.AddSecurityRequirement(
+        new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+        {
             {
-                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                new Microsoft.OpenApi.Models.OpenApiSecurityScheme
                 {
-                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            Array.Empty<string>()
-        }
-    });
+                    Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                    {
+                        Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                },
+                Array.Empty<string>()
+            }
+        });
 });
 
 builder.Services.AddScoped<TokenService>();
@@ -129,12 +132,9 @@ builder.Services.AddScoped<PasswordService>();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
+app.UseSwagger();
 
-    app.UseSwaggerUI();
-}
+app.UseSwaggerUI();
 
 app.UseSerilogRequestLogging();
 
