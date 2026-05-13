@@ -11,6 +11,7 @@ using TraceFlowTraining.Infrastructure.Middleware;
 using Serilog;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using HealthChecks.NpgSql;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -49,6 +50,11 @@ builder.Services.AddOpenTelemetry()
     });
 
 builder.Services.AddControllers();
+
+builder.Services.AddHealthChecks()
+    .AddNpgSql(
+        "Host=localhost;Port=5433;Database=traceflowdb;Username=postgres;Password=postgres",
+        name: "postgresql");
 
 builder.Services.AddDbContext<TraceFlowDbContext>(options =>
     options.UseNpgsql(
@@ -141,5 +147,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHealthChecks("/health");
 
 app.Run();

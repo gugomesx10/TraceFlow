@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: traceflow-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: traceflowdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  seq:
+    image: datalust/seq
+    container_name: traceflow-seq
+    restart: always
+    environment:
+      ACCEPT_EULA: Y
+      SEQ_FIRSTRUN_ADMINPASSWORD: Admin123!
+    ports:
+      - "5341:80"
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: traceflow-jaeger
+    restart: always
+    environment:
+      COLLECTOR_OTLP_ENABLED: true
+    ports:
+      - "16686:16686"
+      - "4317:4317"
+
+volumes:
+  postgres_data:
