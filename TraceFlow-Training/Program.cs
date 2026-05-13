@@ -9,6 +9,8 @@ using System.Text;
 using TraceFlowTraining.Infrastructure.Security;
 using TraceFlowTraining.Infrastructure.Middleware;
 using Serilog;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -19,6 +21,32 @@ Log.Logger = new LoggerConfiguration()
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog();
+
+builder.Services.AddOpenTelemetry()
+    .WithTracing(tracing =>
+    {
+        tracing
+            .SetResourceBuilder(
+                ResourceBuilder.CreateDefault()
+                    .AddService("TraceFlowAPI"))
+
+            .AddAspNetCoreInstrumentation()
+
+            .AddHttpClientInstrumentation()
+
+            .AddEntityFrameworkCoreInstrumentation(options =>
+            {
+                options.SetDbStatementForText = true;
+            })
+
+            .AddConsoleExporter()
+
+            .AddOtlpExporter(options =>
+            {
+                options.Endpoint =
+                    new Uri("http://localhost:4317");
+            });
+    });
 
 builder.Services.AddControllers();
 
