@@ -1,0 +1,12 @@
+C:\Rider\TraceFlow-Training\TraceFlowTraining.Application\bin\Debug\net8.0\TraceFlowTraining.Application.deps.json
+C:\Rider\TraceFlow-Training\TraceFlowTraining.Application\bin\Debug\net8.0\TraceFlowTraining.Application.dll
+C:\Rider\TraceFlow-Training\TraceFlowTraining.Application\bin\Debug\net8.0\TraceFlowTraining.Application.pdb
+C:\Rider\TraceFlow-Training\TraceFlowTraining.Application\obj\Debug\net8.0\TraceFlowTraining.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Rider\TraceFlow-Training\TraceFlowTraining.Application\obj\Debug\net8.0\TraceFlowTraining.Application.AssemblyInfoInputs.cache
+C:\Rider\TraceFlow-Training\TraceFlowTraining.Application\obj\Debug\net8.0\TraceFlowTraining.Application.AssemblyInfo.cs
+C:\Rider\TraceFlow-Training\TraceFlowTraining.Application\obj\Debug\net8.0\TraceFlowTraining.Application.csproj.CoreCompileInputs.cache
+C:\Rider\TraceFlow-Training\TraceFlowTraining.Application\obj\Debug\net8.0\TraceFlowTraining.Application.sourcelink.json
+C:\Rider\TraceFlow-Training\TraceFlowTraining.Application\obj\Debug\net8.0\TraceFlowTraining.Application.dll
+C:\Rider\TraceFlow-Training\TraceFlowTraining.Application\obj\Debug\net8.0\refint\TraceFlowTraining.Application.dll
+C:\Rider\TraceFlow-Training\TraceFlowTraining.Application\obj\Debug\net8.0\TraceFlowTraining.Application.pdb
+C:\Rider\TraceFlow-Training\TraceFlowTraining.Application\obj\Debug\net8.0\ref\TraceFlowTraining.Application.dll
