@@ -29,5 +29,6 @@
 
         <ProjectReference Include="..\TraceFlowTraining.Infrastructure\TraceFlowTraining.Infrastructure.csproj" />
     </ItemGroup>
+    
 
 </Project>

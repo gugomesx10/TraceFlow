@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using TraceFlowTraining.Infrastructure.Security;
+using TraceFlowTraining.Infrastructure.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -93,6 +94,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthentication();
 
