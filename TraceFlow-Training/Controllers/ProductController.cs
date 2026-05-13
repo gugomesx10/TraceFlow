@@ -1,14 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using TraceFlowTraining.Application.DTOs.Product;
 using TraceFlowTraining.Domain.Entities;
 using TraceFlowTraining.Domain.Interfaces;
+
 
 namespace TraceFlow_Training.Controllers;
 
 /// <summary>
 /// Product management endpoints
 /// </summary>
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class ProductController : ControllerBase
