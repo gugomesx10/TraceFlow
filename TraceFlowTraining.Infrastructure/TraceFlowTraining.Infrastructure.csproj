@@ -12,10 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Persistence\Migrations\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\TraceFlowTraining.Domain\TraceFlowTraining.Domain.csproj" />
     </ItemGroup>
 
