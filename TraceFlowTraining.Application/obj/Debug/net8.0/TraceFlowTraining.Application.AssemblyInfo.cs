@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TraceFlowTraining.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee6e5f58ca82c23a36beaf1bb4739ec915c69eb3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+811b4f99d20d07f308c61fa587546d77cef44a23")]
 [assembly: System.Reflection.AssemblyProductAttribute("TraceFlowTraining.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TraceFlowTraining.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
