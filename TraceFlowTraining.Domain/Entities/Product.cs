@@ -18,7 +18,7 @@ public class Product
     [Required]
     [Column("SKU")]
     [StringLength(50)]
-    public string SKU { get; set; } = string.Empty;
+    public string Sku { get; set; } = string.Empty;
     
     [Required]
     [Column("QUANTITY")]

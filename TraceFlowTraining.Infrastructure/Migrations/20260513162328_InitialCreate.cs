@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace TraceFlowTraining.Infrastructure.Persistence.Migrations
+namespace TraceFlowTraining.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -47,26 +47,26 @@ namespace TraceFlowTraining.Infrastructure.Persistence.Migrations
                 {
                     ID = table.Column<Guid>(type: "uuid", nullable: false),
                     PRODUCT_ID = table.Column<Guid>(type: "uuid", nullable: false),
-                    PRODUCT_ID1 = table.Column<Guid>(type: "uuid", nullable: false),
                     QUANTITY = table.Column<int>(type: "integer", nullable: false),
                     TYPE = table.Column<int>(type: "integer", nullable: false),
-                    TIMESTAMP = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    TIMESTAMP = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    PRODUCT_ID1 = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TB_STOCK_MOVEMENTS", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_TB_STOCK_MOVEMENTS_TB_PRODUCTS_PRODUCT_ID1",
-                        column: x => x.PRODUCT_ID1,
+                        name: "FK_TB_STOCK_MOVEMENTS_TB_PRODUCTS_PRODUCT_ID",
+                        column: x => x.PRODUCT_ID,
                         principalTable: "TB_PRODUCTS",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_TB_STOCK_MOVEMENTS_PRODUCT_ID1",
+                name: "IX_TB_STOCK_MOVEMENTS_PRODUCT_ID",
                 table: "TB_STOCK_MOVEMENTS",
-                column: "PRODUCT_ID1");
+                column: "PRODUCT_ID");
         }
 
         /// <inheritdoc />

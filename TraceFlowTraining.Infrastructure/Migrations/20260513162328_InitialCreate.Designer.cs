@@ -2,18 +2,21 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TraceFlowTraining.Infrastructure.Persistence.Context;
 
 #nullable disable
 
-namespace TraceFlowTraining.Infrastructure.Persistence.Migrations
+namespace TraceFlowTraining.Infrastructure.Migrations
 {
     [DbContext(typeof(TraceFlowDbContext))]
-    partial class TraceFlowDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260513162328_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,7 +50,7 @@ namespace TraceFlowTraining.Infrastructure.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("QUANTITY");
 
-                    b.Property<string>("SKU")
+                    b.Property<string>("Sku")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)")
@@ -86,7 +89,7 @@ namespace TraceFlowTraining.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PRODUCT_ID");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("TB_STOCK_MOVEMENTS", t =>
                         {
@@ -127,7 +130,7 @@ namespace TraceFlowTraining.Infrastructure.Persistence.Migrations
                 {
                     b.HasOne("TraceFlowTraining.Domain.Entities.Product", "Product")
                         .WithMany("StockMovements")
-                        .HasForeignKey("PRODUCT_ID")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
