@@ -81,6 +81,8 @@ builder.Services
             };
     });
 
+builder.Services.AddScoped<PasswordService>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
