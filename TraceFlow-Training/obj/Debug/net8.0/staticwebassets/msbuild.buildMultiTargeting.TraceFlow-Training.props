@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\TraceFlow-Training.props" />
-</Project>
